@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vienna Brass Connection — 2026 臺奧文化交流巡演</title>
+<meta name="description" content="Vienna Brass Connection（維也納銅管樂團）2026 年首度來臺巡演，以苗栗、臺北、新竹三站呈現大型銅管與打擊編制的現場音樂能量。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="IMAGES/logo2.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== 全局變數 — 劇院黑金色彩系統 ===== */
+:root {
+  --bg: #0a0a08;
+  --bg-soft: #12110e;
+  --fg: #f5f0e8;
+  --gold: #c9a227;
+  --gold-light: #d4af37;
+  --gold-dim: rgba(201, 162, 39, 0.5);
+  --card: #1a1815;
+  --card-hover: #221f1a;
+  --border: rgba(201, 162, 39, 0.15);
+  --border-hover: rgba(201, 162, 39, 0.35);
+  --muted: rgba(245, 240, 232, 0.6);
+  --muted-light: rgba(245, 240, 232, 0.35);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* ===== Reset & 基礎設定 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Noto Sans TC", "Inter", sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: "Noto Serif TC", "Cormorant Garamond", serif; font-weight: 700; line-height: 1.3; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ===== 通用容器 ===== */
+.container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+@media (min-width: 640px) { .container { padding: 0 1.5rem; } }
+@media (min-width: 1024px) { .container { padding: 0 2rem; } }
+
+/* ===== 金色工具類 ===== */
+.text-gold { color: var(--gold); }
+.text-gold-light { color: var(--gold-light); }
+.bg-gold { background-color: var(--gold); }
+.border-gold { border-color: var(--gold); }
+
+/* ===== 金色分隔線 ===== */
+.gold-divider {
+  width: 60px; height: 2px; background: var(--gold);
+  margin: 0 auto 2rem; border: none;
+}
+.gold-divider.left { margin-left: 0; }
+
+/* ===== 章節標題 ===== */
+.section-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.85rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.75rem; font-weight: 500;
+}
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1rem; color: var(--fg);
+}
+.section-subtitle {
+  font-size: 1rem; color: var(--muted);
+  max-width: 640px; margin-bottom: 3rem;
+}
+
+/* ===== 導航列 ===== */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.25rem 0;
+  background: transparent;
+  transition: background 0.3s var(--ease-out), padding 0.3s var(--ease-out);
+}
+.navbar.scrolled {
+  background: rgba(10, 10, 8, 0.92);
+  backdrop-filter: blur(20px);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.navbar.scrolled .nav-logo img { height: 42px; }
+.navbar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; }
+.nav-logo img { height: 72px; width: auto; transition: height 0.35s var(--ease-out); }
+.nav-logo-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem; font-weight: 600; color: var(--fg);
+  letter-spacing: 0.05em;
+}
+.nav-logo-text small {
+  display: block; font-size: 0.65rem; color: var(--gold);
+  letter-spacing: 0.2em; text-transform: uppercase;
+  font-family: "Noto Sans TC", sans-serif; font-weight: 400;
+}
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+  font-size: 0.9rem; color: var(--muted);
+  transition: color 0.2s var(--ease-out);
+  position: relative; padding: 0.25rem 0;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 1px; background: var(--gold);
+  transition: width 0.25s var(--ease-out);
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  padding: 0.875rem 2.25rem; border: 2px solid var(--gold);
+  color: var(--gold) !important; border-radius: 2px;
+  font-size: 0.95rem; transition: all 0.2s var(--ease-out);
+}
+.nav-cta:hover { background: var(--gold); color: var(--bg) !important; }
+.nav-cta::after { display: none; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.nav-toggle span {
+  display: block; width: 24px; height: 2px; background: var(--fg);
+  margin: 5px 0; transition: 0.3s var(--ease-out);
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: rgba(10, 10, 8, 0.98); backdrop-filter: blur(20px);
+    flex-direction: column; padding: 1.5rem 2rem; gap: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: block; }
+}
+
+/* ===== 英雄區 ===== */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('IMAGES/121-ViennaBrassConnection-121.webp') center/cover no-repeat;
+  filter: brightness(0.65);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,8,0.25) 0%, rgba(10,10,8,0.15) 40%, rgba(10,10,8,0.55) 100%);
+}
+.hero-spotlight {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse at center top, rgba(201,162,39,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 8rem 0 4rem;
+}
+.hero-tagline {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1.5rem; font-weight: 500;
+}
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.15; margin-bottom: 1.5rem;
+  max-width: 720px;
+}
+.hero-title .gold { color: var(--gold); }
+.hero-subtitle {
+  font-size: 1.15rem; color: var(--muted);
+  max-width: 560px; margin-bottom: 2rem;
+  line-height: 1.8;
+}
+.hero-philosophy {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic; font-size: 1.3rem;
+  color: var(--gold-light); margin-bottom: 2.5rem;
+  max-width: 480px;
+}
+.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.875rem 2rem; background: var(--gold);
+  color: var(--bg); font-weight: 600; font-size: 0.9rem;
+  border: none; cursor: pointer; border-radius: 2px;
+  transition: all 0.2s var(--ease-out);
+  letter-spacing: 0.05em;
+}
+.btn-gold:hover { background: var(--gold-light); transform: scale(0.97); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.875rem 2rem; border: 1px solid var(--gold-dim);
+  color: var(--fg); font-weight: 500; font-size: 0.9rem;
+  background: transparent; cursor: pointer; border-radius: 2px;
+  transition: all 0.2s var(--ease-out);
+  letter-spacing: 0.05em;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: scale(0.97); }
+
+/* 聲波紋裝飾 */
+.soundwave {
+  display: flex; align-items: flex-end; gap: 3px;
+  height: 30px; margin-bottom: 1.5rem;
+}
+.soundwave span {
+  width: 3px; background: var(--gold);
+  border-radius: 1px; opacity: 0.7;
+  animation: wave 1.5s ease-in-out infinite;
+}
+.soundwave span:nth-child(1) { height: 40%; animation-delay: 0s; }
+.soundwave span:nth-child(2) { height: 70%; animation-delay: 0.1s; }
+.soundwave span:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+.soundwave span:nth-child(4) { height: 90%; animation-delay: 0.3s; }
+.soundwave span:nth-child(5) { height: 60%; animation-delay: 0.4s; }
+.soundwave span:nth-child(6) { height: 80%; animation-delay: 0.5s; }
+.soundwave span:nth-child(7) { height: 45%; animation-delay: 0.6s; }
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.5); }
+  50% { transform: scaleY(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .soundwave span { animation: none; }
+}
+
+/* ===== 章節通用 ===== */
+section { padding: 6rem 0; position: relative; }
+@media (max-width: 768px) { section { padding: 4rem 0; } }
+
+/* ===== 關於樂團 ===== */
+.about { background: var(--bg); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+@media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+.about-image {
+  position: relative; border-radius: 4px; overflow: hidden;
+}
+.about-image img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+.about-image:hover img { transform: scale(1.05); }
+.about-image::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent 60%, rgba(201,162,39,0.1) 100%);
+  pointer-events: none;
+}
+.about-text p {
+  margin-bottom: 1.25rem; color: var(--muted);
+  font-size: 0.95rem; line-height: 1.85;
+}
+.about-text p strong { color: var(--fg); font-weight: 500; }
+.about-quote {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic; font-size: 1.4rem;
+  color: var(--gold-light); margin: 1.5rem 0;
+  padding-left: 1.25rem; border-left: 2px solid var(--gold);
+  line-height: 1.5;
+}
+
+/* 樂團機構標籤 */
+.institution-grid {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.institution-tag {
+  padding: 0.35rem 0.875rem;
+  border: 1px solid var(--border); border-radius: 2px;
+  font-size: 0.75rem; color: var(--muted);
+  transition: all 0.2s var(--ease-out);
+}
+.institution-tag:hover {
+  border-color: var(--gold-dim); color: var(--gold);
+}
+
+/* ===== 指揮區 ===== */
+.conductor { background: var(--bg-soft); }
+.conductor-grid {
+  display: grid; grid-template-columns: 1fr 1.5fr;
+  gap: 4rem; align-items: start;
+}
+@media (max-width: 768px) { .conductor-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.conductor-image {
+  border-radius: 4px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.conductor-image img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+.conductor-info h3 {
+  font-size: 1.75rem; margin-bottom: 0.25rem;
+}
+.conductor-info .name-en {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem; color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.conductor-info p {
+  color: var(--muted); font-size: 0.95rem;
+  line-height: 1.85; margin-bottom: 1rem;
+}
+
+/* ===== 巡演資訊 ===== */
+.tour { background: var(--bg); }
+.tour-header { text-align: center; margin-bottom: 4rem; }
+.tour-header .gold-divider { margin: 0 auto 1.5rem; }
+.tour-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 768px) { .tour-cards { grid-template-columns: 1fr; } }
+.tour-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 4px; padding: 2rem;
+  transition: all 0.3s var(--ease-out);
+  position: relative; overflow: hidden;
+}
+.tour-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s var(--ease-out);
+}
+.tour-card:hover {
+  border-color: var(--border-hover); background: var(--card-hover);
+  transform: translateY(-4px);
+}
+.tour-card:hover::before { transform: scaleX(1); }
+.tour-card-date {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.5rem; font-weight: 700; color: var(--gold);
+  line-height: 1; margin-bottom: 0.5rem;
+}
+.tour-card-date small {
+  font-size: 0.9rem; color: var(--muted);
+  font-weight: 400; margin-left: 0.25rem;
+}
+.tour-card-city {
+  font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;
+}
+.tour-card-title {
+  font-family: "Noto Serif TC", serif;
+  font-size: 0.95rem; color: var(--gold-light);
+  margin-bottom: 1rem; line-height: 1.5;
+}
+.tour-card-title-en {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.8rem; color: var(--muted-light);
+  margin-bottom: 1rem; font-style: italic;
+}
+.tour-card-venue {
+  font-size: 0.85rem; color: var(--muted);
+  margin-bottom: 1rem; padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.tour-card-venue strong { color: var(--fg); font-weight: 500; }
+.tour-card-desc {
+  font-size: 0.85rem; color: var(--muted);
+  line-height: 1.7;
+}
+.tour-card-badge {
+  display: inline-block; padding: 0.25rem 0.75rem;
+  background: rgba(201, 162, 39, 0.1);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px; font-size: 0.7rem;
+  color: var(--gold); letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+}
+
+/* ===== 演出曲目 ===== */
+.program { background: var(--bg-soft); }
+.program-header { text-align: center; margin-bottom: 4rem; }
+.program-header .gold-divider { margin: 0 auto 1.5rem; }
+.program-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+@media (max-width: 768px) { .program-layout { grid-template-columns: 1fr; gap: 2rem; } }
+.program-half h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.25rem; color: var(--gold);
+  margin-bottom: 1.5rem; padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.program-half h3 .label-zh {
+  font-family: "Noto Serif TC", serif; font-size: 0.9rem;
+  color: var(--muted); font-weight: 400;
+}
+.program-list { list-style: none; }
+.program-item {
+  padding: 1rem 0; border-bottom: 1px solid rgba(201,162,39,0.08);
+  transition: padding 0.2s var(--ease-out);
+}
+.program-item:hover { padding-left: 0.5rem; }
+.program-item-num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.8rem; color: var(--gold-dim);
+  margin-bottom: 0.25rem;
+}
+.program-item-title {
+  font-size: 0.9rem; color: var(--fg); font-weight: 500;
+  line-height: 1.5; margin-bottom: 0.15rem;
+}
+.program-item-arranger {
+  font-size: 0.75rem; color: var(--muted-light);
+  font-style: italic;
+}
+.program-intermission {
+  text-align: center; padding: 1.5rem 0;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic; color: var(--muted);
+  font-size: 0.9rem; letter-spacing: 0.15em;
+}
+
+/* 臺灣特別呈現 */
+.taiwan-special {
+  margin-top: 3rem; padding: 2rem;
+  background: linear-gradient(135deg, rgba(201,162,39,0.08), rgba(201,162,39,0.02));
+  border: 1px solid var(--gold-dim); border-radius: 4px;
+  text-align: center;
+}
+.taiwan-special-badge {
+  display: inline-block; padding: 0.3rem 1rem;
+  background: var(--gold); color: var(--bg);
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.2em; border-radius: 2px;
+  margin-bottom: 1rem;
+}
+.taiwan-special h3 {
+  font-size: 1.5rem; margin-bottom: 0.5rem;
+}
+.taiwan-special .title-en {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem; color: var(--gold);
+  margin-bottom: 1rem; font-style: italic;
+}
+.taiwan-special p {
+  font-size: 0.9rem; color: var(--muted);
+  max-width: 560px; margin: 0 auto; line-height: 1.8;
+}
+
+/* 安可曲 */
+.encores {
+  margin-top: 2rem; padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.encores h4 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1rem; color: var(--gold);
+  margin-bottom: 1rem; letter-spacing: 0.1em;
+}
+
+/* ===== 演出寫真 ===== */
+.gallery { background: var(--bg); }
+.gallery-header { text-align: center; margin-bottom: 4rem; }
+.gallery-header .gold-divider { margin: 0 auto 1.5rem; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 768px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+.gallery-item {
+  border-radius: 4px; overflow: hidden;
+  position: relative; cursor: pointer;
+  aspect-ratio: 3/2;
+}
+.gallery-item.wide {
+  grid-column: span 2;
+}
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s var(--ease-out);
+}
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,10,8,0.5), transparent 50%);
+  opacity: 0; transition: opacity 0.3s var(--ease-out);
+}
+.gallery-item:hover::after { opacity: 1; }
+
+/* ===== 全體樂手 ===== */
+.ensemble { background: var(--bg-soft); }
+.ensemble-header { text-align: center; margin-bottom: 3rem; }
+.ensemble-header .gold-divider { margin: 0 auto 1.5rem; }
+.ensemble-photo { width: 100%; max-width: 1100px; margin: 0 auto; display: block; border-radius: 4px; overflow: hidden; }
+.ensemble-photo img { width: 100%; height: auto; display: block; }
+.ensemble-caption { text-align: center; margin-top: 1.5rem; color: var(--muted); font-size: 0.85rem; font-style: italic; }
+/* gallery-item span utilities moved to .wide class above */
+
+/* ===== 製作團隊 ===== */
+.team { background: var(--bg-soft); }
+.team-header { text-align: center; margin-bottom: 4rem; }
+.team-header .gold-divider { margin: 0 auto 1.5rem; }
+.team-intro {
+  max-width: 640px; margin: 0 auto 3rem; text-align: center;
+  font-size: 0.95rem; color: var(--muted); line-height: 1.85;
+}
+.team-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 768px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+.team-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 4px; padding: 1.5rem;
+  transition: all 0.25s var(--ease-out);
+}
+.team-card:hover { border-color: var(--border-hover); background: var(--card-hover); }
+.team-card-role {
+  font-size: 0.75rem; color: var(--gold);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.team-card-name {
+  font-size: 1rem; font-weight: 600; color: var(--fg);
+}
+
+/* ===== 影音區 ===== */
+.video-section { background: var(--bg); }
+.video-header { text-align: center; margin-bottom: 3rem; }
+.video-header .gold-divider { margin: 0 auto 1.5rem; }
+.video-links {
+  display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
+}
+.video-link {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 2rem; background: var(--card);
+  border: 1px solid var(--border); border-radius: 4px;
+  color: var(--fg); font-size: 0.9rem;
+  transition: all 0.25s var(--ease-out);
+}
+.video-link:hover {
+  border-color: var(--gold); color: var(--gold);
+  transform: translateY(-2px);
+}
+.video-link-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(201,162,39,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; color: var(--gold);
+}
+
+/* ===== 頁尾 ===== */
+.footer {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+  padding: 4rem 0 2rem;
+  position: relative;
+}
+.footer-silhouette {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 120px; opacity: 0.15;
+  background: url('IMAGES/vienna-silhouette.jpg') center bottom/cover no-repeat;
+  filter: brightness(0) invert(1) opacity(0.3);
+  mask-image: linear-gradient(to bottom, transparent, black 50%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 50%, transparent);
+  pointer-events: none;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
+  position: relative; z-index: 1;
+}
+@media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-brand img {
+  height: 48px; width: auto; margin-bottom: 1rem;
+  transition: height 0.6s var(--ease-out), filter 0.6s var(--ease-out);
+  filter: brightness(0.85);
+}
+.footer-brand img.enlarged {
+  height: 96px;
+  filter: brightness(1);
+}
+.footer-brand p {
+  font-size: 0.85rem; color: var(--muted);
+  line-height: 1.7; max-width: 320px;
+}
+.footer-col h4 {
+  font-size: 0.85rem; color: var(--gold);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 1rem; font-weight: 600;
+  font-family: "Noto Sans TC", sans-serif;
+}
+.footer-col a, .footer-col p {
+  display: block; font-size: 0.85rem; color: var(--muted);
+  margin-bottom: 0.5rem; transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem; text-align: center;
+  position: relative; z-index: 1;
+}
+.footer-bottom p {
+  font-size: 0.75rem; color: var(--muted-light);
+  line-height: 1.6;
+}
+.footer-credit {
+  font-size: 0.7rem; color: var(--muted-light);
+  margin-top: 0.5rem; font-style: italic;
+}
+
+/* ===== 滾動淡入動畫 ===== */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ===== 編制統計 ===== */
+.stats-bar {
+  display: flex; justify-content: center; gap: 3rem;
+  padding: 2.5rem 0; border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border); margin: 3rem 0;
+  flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.5rem; font-weight: 700; color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.75rem; color: var(--muted);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+@media (max-width: 768px) {
+  .stats-bar { gap: 1.5rem; }
+  .stat-num { font-size: 2rem; }
+}
+
+/* ===== 導聆專頁 ===== */
+.pre-talk {
+  background: var(--bg);
+  min-height: 100vh;
+  padding: 10rem 0 6rem;
+}
+.pre-talk-back {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.85rem; color: var(--muted);
+  transition: color 0.2s var(--ease-out);
+  margin-bottom: 3rem;
+}
+.pre-talk-back:hover { color: var(--gold); }
+.pre-talk-header { text-align: center; margin-bottom: 4rem; }
+.pre-talk-header .gold-divider { margin: 0 auto 1.5rem; }
+.pre-talk-badge {
+  display: inline-block; padding: 0.3rem 1rem;
+  background: rgba(201,162,39,0.1); border: 1px solid var(--gold-dim);
+  border-radius: 2px; font-size: 0.7rem; color: var(--gold);
+  letter-spacing: 0.2em; margin-bottom: 1rem;
+}
+.pre-talk-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2rem; max-width: 900px; margin: 0 auto 4rem;
+}
+@media (max-width: 768px) { .pre-talk-grid { grid-template-columns: 1fr; } }
+.pre-talk-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 4px; padding: 2.5rem;
+  transition: all 0.3s var(--ease-out);
+  position: relative; overflow: hidden;
+}
+.pre-talk-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s var(--ease-out);
+}
+.pre-talk-card:hover { border-color: var(--border-hover); }
+.pre-talk-card:hover::before { transform: scaleX(1); }
+.pre-talk-card-label {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.8rem; color: var(--gold); letter-spacing: 0.2em;
+  text-transform: uppercase; margin-bottom: 1rem;
+}
+.pre-talk-card h3 {
+  font-size: 1.4rem; margin-bottom: 1.5rem; color: var(--fg);
+}
+.pre-talk-info-row {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  margin-bottom: 1rem; padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(201,162,39,0.08);
+}
+.pre-talk-info-row:last-child { border-bottom: none; }
+.pre-talk-info-label {
+  font-size: 0.8rem; color: var(--gold); white-space: nowrap;
+  min-width: 60px; font-weight: 500;
+}
+.pre-talk-info-value {
+  font-size: 0.9rem; color: var(--muted); line-height: 1.7;
+}
+.pre-talk-info-value strong { color: var(--fg); font-weight: 500; }
+
+/* 主講人區 */
+.speaker-section {
+  max-width: 900px; margin: 0 auto;
+  display: grid; grid-template-columns: 280px 1fr;
+  gap: 3rem; align-items: start;
+}
+@media (max-width: 768px) { .speaker-section { grid-template-columns: 1fr; gap: 2rem; } }
+.speaker-photo {
+  border-radius: 4px; overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 3/4;
+}
+.speaker-photo img { width: 100%; height: 100%; object-fit: cover; }
+.speaker-info .section-label { margin-bottom: 0.5rem; }
+.speaker-info h3 {
+  font-size: 1.75rem; margin-bottom: 0.25rem;
+}
+.speaker-info .name-en {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem; color: var(--gold);
+  margin-bottom: 1.5rem; font-style: italic;
+}
+.speaker-info p {
+  color: var(--muted); font-size: 0.95rem;
+  line-height: 1.85; margin-bottom: 1rem;
+}
+.speaker-placeholder {
+  padding: 2rem; background: rgba(201,162,39,0.04);
+  border: 1px dashed var(--gold-dim); border-radius: 4px;
+  color: var(--muted-light); font-size: 0.85rem;
+  text-align: center; font-style: italic;
+  margin-top: 1.5rem;
+}
+/* ===== TOP 按鈕 ===== */
+.top-btn {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 99;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(201, 162, 39, 0.15);
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  font-size: 0.7rem; letter-spacing: 0.1em;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 2px;
+  opacity: 0; visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s var(--ease-out);
+  backdrop-filter: blur(10px);
+}
+.top-btn.visible {
+  opacity: 1; visibility: visible; transform: translateY(0);
+}
+.top-btn:hover {
+  background: var(--gold); color: var(--bg);
+  border-color: var(--gold); transform: scale(0.95);
+}
+.top-btn svg { width: 18px; height: 18px; }
+</style>
+</head>
+<body>
+
+<!-- ===== 導航列 ===== -->
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <a href="#hero" class="nav-logo">
+      <img src="IMAGES/logo2.png" alt="VBC Logo">
+
+
+      <span class="nav-logo-text">
+        Vienna Brass Connection
+        <small>維也納銅管樂團</small>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="選單">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">關於樂團</a>
+      <a href="#conductor">指揮</a>
+      <a href="#tour">2026 巡演</a>
+      <a href="#program">演出曲目</a>
+      <a href="#gallery">演出寫真</a>
+      <a href="#ensemble">全體樂手</a>
+      <a href="#team">製作團隊</a>
+      <a href="#tour" class="nav-cta" style="padding: 0.875rem 2.25rem; font-size: 0.95rem; border-width: 2px;">購票資訊</a>
+
+    </div>
+  </div>
+</nav>
+
+<!-- ===== 英雄區 ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-spotlight"></div>
+  <div class="container hero-content">
+    <div class="soundwave">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="hero-tagline">2026 臺奧文化交流巡演</div>
+    <h1 class="hero-title">
+      <span class="gold">One moment.</span><br>
+      One breath. One sound.
+    </h1>
+    <p class="hero-philosophy">
+      「充滿能量，專注於唯一重要的事——當下這一刻；此時此地。」
+    </p>
+    <p class="hero-subtitle">
+      來自維也納的 17 位銅管樂手與 3 位打擊樂手，首度來臺。<br>
+      以大型銅管與打擊編制，呈現兼具歐洲職業樂團精準度與現場舞台能量的音樂會。
+    </p>
+    <div class="hero-buttons">
+      <a href="#tour" class="btn-gold">查看巡演場次</a>
+      <a href="#program" class="btn-outline">演出曲目</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 關於樂團 ===== -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="IMAGES/28-ViennaBrassConnection-28.webp" alt="Vienna Brass Connection 演出">
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">About VBC</div>
+        <h2 class="section-title">維也納銅管樂團</h2>
+        <hr class="gold-divider left">
+        <p>
+          <strong>Vienna Brass Connection</strong> 由來自奧地利的 17 位銅管樂手與 3 位打擊樂手組成，成員齊聚於維也納，共同打造一個兼具藝術深度與舞台感染力的音樂團體。該團體以「現場（LIVE）」為核心理念，強調音樂在當下發生的即時性與不可取代性，透過純粹而直接的聲響傳遞，重新喚起觀眾對音樂最真實的感受與共鳴。
+        </p>
+        <p>
+          團員皆為活躍於歐洲樂壇的重要職業音樂家，分別任職於奧地利與德國多個頂尖音樂機構。這樣的陣容不僅象徵高度的專業演奏能力，也展現出深厚的歐洲音樂傳統與跨樂團的合作能量。
+        </p>
+        <div class="about-quote">
+          「透過精緻編曲與高度整合的聲響設計，在保有銅管音樂厚實與華麗音色的同時，也呈現細膩層次與戲劇張力。」
+        </div>
+        <p>
+          VBC 的藝術目標不僅止於演奏技巧的展現，更在於創造一種能夠直接觸動觀眾的音樂體驗。透過強烈的節奏推進、鮮明的音色對比與富有動態變化的舞台呈現，讓觀眾在短時間內被音樂吸引並沉浸其中，進而產生情感共鳴。
+        </p>
+        <div class="institution-grid">
+          <span class="institution-tag">維也納愛樂</span>
+          <span class="institution-tag">維也納國家歌劇院</span>
+          <span class="institution-tag">維也納交響樂團</span>
+          <span class="institution-tag">維也納人民歌劇院</span>
+          <span class="institution-tag">維也納廣播交響樂團</span>
+          <span class="institution-tag">薩爾斯堡莫札特音樂學院樂團</span>
+          <span class="institution-tag">格拉茲愛樂</span>
+          <span class="institution-tag">科隆 WDR 交響樂團</span>
+          <span class="institution-tag">巴伐利亞國家歌劇院</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-bar reveal">
+      <div class="stat-item">
+        <div class="stat-num">17</div>
+        <div class="stat-label">銅管樂手</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">打擊樂手</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1</div>
+        <div class="stat-label">指揮</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100<span style="font-size:1.2rem;">min</span></div>
+        <div class="stat-label">演出長度</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">臺灣巡演場次</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 指揮 ===== -->
+<section class="conductor" id="conductor">
+  <div class="container">
+    <div class="conductor-grid">
+      <div class="conductor-image reveal">
+        <img src="IMAGES/OliverErenyi-3.webp" alt="指揮 Johannes Kafka">
+      </div>
+      <div class="conductor-info reveal">
+        <div class="section-label">Conductor</div>
+        <h2 class="section-title">指揮</h2>
+        <hr class="gold-divider left">
+        <h3>約翰內斯・卡夫卡</h3>
+        <p class="name-en">Johannes Kafka</p>
+        <p>
+          約翰內斯・卡夫卡出生於 1984 年，曾於林茲安東布魯克納私立大學主修低音管，並進一步專注於合唱與管弦樂指揮相關學習。其演奏與指揮經歷橫跨管弦樂、劇場與大型合奏領域，曾參與多個歐洲重要樂團之演出，並自 2010 年起任職於維也納國家歌劇院舞台樂團。
+        </p>
+        <p>
+          長期身處歌劇院與職業樂團體系，使其對舞台節奏、戲劇推進、聲響平衡與大型編制合作具有深刻掌握。在 VBC 中，卡夫卡不僅擔任指揮，也參與團隊音樂語彙與舞台整體推進之形塑。
+        </p>
+        <p>
+          大型銅管與打擊編制對節奏、音量、聲部平衡與音色層次皆有高度要求，指揮需同時掌握精準度與現場張力。卡夫卡兼具管樂演奏背景、劇場經驗與指揮能力，能有效整合 VBC 成員來自不同職業樂團體系的演奏語言，使團隊在強烈聲響能量中仍保有細膩結構與室內樂般的合奏彈性。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2026 巡演 ===== -->
+<section class="tour" id="tour">
+  <div class="container">
+    <div class="tour-header reveal">
+      <div class="section-label">2026 Taiwan Tour</div>
+      <h2 class="section-title">臺奧文化交流巡演</h2>
+      <hr class="gold-divider">
+      <p class="section-subtitle" style="margin: 0 auto;">
+        以「一項計畫、三個節點、多重效益」為規劃原則，苗栗、臺北、新竹三站各自承擔不同任務，形成完整而互補的計畫結構。
+      </p>
+    </div>
+    <div class="tour-cards">
+      <div class="tour-card reveal">
+        <div class="tour-card-badge">第一站</div>
+        <div class="tour-card-date">12/11<small>2026 Fri</small></div>
+        <div class="tour-card-city">苗栗</div>
+        <!-- <div class="tour-card-title">VBC LIVE 苗北藝術節特別演出</div> -->
+        <!-- <div class="tour-card-title-en">Vienna Brass Connection LIVE at Miaobei Arts Festival</div> -->
+        <div class="tour-card-venue">
+          <strong>苗北藝文中心演藝廳</strong><br>
+          合作單位：苗北藝術節／苗北藝文中心
+        </div>
+        <!-- <p class="tour-card-desc">
+          完整呈現 VBC《LIVE》節目精神與大型銅管、打擊編制之現場能量，作為苗北藝術節國際節目亮點，提升地方藝術節之國際節目能量。
+        </p> -->
+        <div style="display:flex; gap:0.75rem; margin-top:1.25rem; flex-wrap:wrap;">
+          <a href="https://www.opentix.life/event/2076489805923938305" target="_blank" rel="noopener" class="btn-gold" style="display:inline-flex; padding:0.6rem 1.5rem; font-size:0.8rem;">
+  立即購票
+</a>
+          <a href="pre-talk.html" class="btn-outline" style="display:inline-flex; padding:0.6rem 1.5rem; font-size:0.8rem;">
+  演前導聆資訊
+</a>
+        </div>
+
+      </div>
+      <div class="tour-card reveal">
+        <div class="tour-card-badge">第二站</div>
+        <div class="tour-card-date">12/12<small>2026 Sat</small></div>
+        <div class="tour-card-city">臺北</div>
+        <!-- <div class="tour-card-title">維也納之聲—台奧友誼慈善音樂會</div>
+        <div class="tour-card-title-en">Vienna Brass Connection Charity Concert</div> -->
+        <div class="tour-card-venue">
+          <strong>國家音樂廳</strong><br>
+          合作單位：國際扶輪 3523 地區
+        </div>
+        <!-- <p class="tour-card-desc">
+          結合維也納音樂品牌、扶輪公益精神與臺奧友誼，形塑兼具藝術品質與公共關懷之慈善音樂會，連結公益服務與民間文化外交。
+        </p> -->
+
+      </div>
+      <div class="tour-card reveal">
+        <div class="tour-card-badge">第三站</div>
+        <div class="tour-card-date">12/13<small>2026 Sun</small></div>
+        <div class="tour-card-city">新竹</div>
+        <!-- <div class="tour-card-title">國際藝術交流計畫</div>
+        <div class="tour-card-title-en">International Arts Exchange Program</div> -->
+        <div class="tour-card-venue">
+          <strong>新竹縣政府文化局演藝廳</strong><br>
+          合作單位：新竹縣政府文化局
+        </div>
+        <!-- <p class="tour-card-desc">
+          除 VBC 正式演出外，安排新竹在地表演藝術團隊演前約 10 分鐘精華展演，演後進行約 20 分鐘座談交流，促成國際團隊與在地藝術之直接對話。
+        </p> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 演出曲目 ===== -->
+<section class="program" id="program">
+  <div class="container">
+    <div class="program-header reveal">
+      <div class="section-label">Program</div>
+      <h2 class="section-title">演出曲目</h2>
+      <hr class="gold-divider">
+      <p class="section-subtitle" style="margin: 0 auto;">
+        涵蓋電影配樂、交響作品改編、跨界作品、原創作品與臺灣特別呈現，展現 VBC 在大型銅管與打擊編制上的多元聲響處理能力。全場約 100 分鐘，含中場休息 20 分鐘。
+      </p>
+    </div>
+    <div class="program-layout">
+      <!-- 上半場 -->
+      <div class="program-half reveal">
+        <h3>First Half <span class="label-zh">上半場</span></h3>
+        <ul class="program-list">
+          <li class="program-item">
+            <div class="program-item-num">01</div>
+            <div class="program-item-title">《闇黑無界：星際爭霸戰》</div>
+            <div class="program-item-arranger">Michael Giacchino / arr. Normen Handrow: Star Trek – Into Darkness</div>
+          </li>
+          <li class="program-item">
+            <div class="program-item-num">02</div>
+            <div class="program-item-title">〈嘉碧雅之歌〉</div>
+            <div class="program-item-arranger">Stefan Nilsson / arr. Manuel Egger: 'Gabriela's Song'</div>
+          </li>
+          <li class="program-item">
+            <div class="program-item-num">03</div>
+            <div class="program-item-title">《反戰組曲》（選自第 9、10、11 號交響曲）</div>
+            <div class="program-item-arranger">Dmitri Shostakovich / arr. Manuel Egger: Anti War Suite</div>
+          </li>
+          <li class="program-item">
+            <div class="program-item-num">04</div>
+            <div class="program-item-title">〈愛之書〉</div>
+            <div class="program-item-arranger">Peter Gabriel / arr. Albert Wieder: 'The Book of Love'</div>
+          </li>
+          <li class="program-item">
+            <div class="program-item-num">05</div>
+            <div class="program-item-title">《藍色狂想曲》</div>
+            <div class="program-item-arranger">George Gershwin / arr. Johannes Kafka: Rhapsody in Blue</div>
+          </li>
+        </ul>
+      </div>
+      <!-- 下半場 -->
+      <div class="program-half reveal">
+        <h3>Second Half <span class="label-zh">下半場</span></h3>
+        <ul class="program-list">
+          <li class="program-item">
+            <div class="program-item-num">06</div>
+            <div class="program-item-title">浴血船長主題曲，選自電影《浴血船長》</div>
+            <div class="program-item-arranger">Erich Wolfgang Korngold / arr. Johannes Kafka: 'Main Title' from Captain Blood</div>
+          </li>
+          <li class="program-item">
+            <div class="program-item-num">07</div>
+            <div class="program-item-title">〈就這樣吧〉</div>
+            <div class="program-item-arranger">Billy Joel / arr. Manuel Egger: 'And So It Goes'</div>
+          </li>
+          <li class="program-item">
+            <div class="program-item-num">08</div>
+            <div class="program-item-title">《Williams aba Gold》</div>
+            <div class="program-item-arranger">John Williams / arr. Normen Handrow</div>
+          </li>
+          <li class="program-item">
+            <div class="program-item-num">09</div>
+            <div class="program-item-title">《藍色連結》第二、三樂章</div>
+            <div class="program-item-arranger">Hamid Medjebeur: Blue Connection, Movements II and III</div>
+          </li>
+          <li class="program-item">
+            <div class="program-item-num">10</div>
+            <div class="program-item-title">《ID4 星際終結者》</div>
+            <div class="program-item-arranger">David Arnold / arr. Christoph Glantschnig: Independence Day</div>
+          </li>
+          <li class="program-item">
+            <div class="program-item-num">11</div>
+            <div class="program-item-title">《來自地獄的問候——維也納吃維也納》</div>
+            <div class="program-item-arranger">Leonhard Paul: Gruß aus der Hölle – Wien isst Wien</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 中場休息
+    <div class="program-intermission reveal">— Intermission 中場休息 —</div> -->
+
+    <!-- 臺灣特別呈現 -->
+    <div class="taiwan-special reveal">
+      <div class="taiwan-special-badge">臺灣特別呈現 · 世界首演</div>
+      <h3>《音樂百年》組曲</h3>
+      <p class="title-en">Ching-Shan Chang: A Century of Taiwan Music</p>
+      <p>
+        本次巡演特別委託作曲家<strong style="color:var(--fg)">張菁珊</strong>改編《音樂百年》臺灣特別版，融合多段臺灣人熟悉且具有時代記憶的旋律素材，透過大型銅管與打擊編制重新詮釋。當來自奧地利的職業音樂家以其精湛演奏能力詮釋臺灣作品，臺灣文化不再只是被介紹或說明，而是進入國際音樂家的聲音系統，被理解、轉譯並呈現在臺灣觀眾面前。
+      </p>
+    </div>
+
+    <!-- 安可曲
+    <div class="encores reveal">
+      <h4>Encores 安可曲</h4>
+      <ul class="program-list">
+        <li class="program-item">
+          <div class="program-item-num">E1</div>
+          <div class="program-item-title">〈慢板〉，選自《阿蘭輝茲協奏曲》</div>
+          <div class="program-item-arranger">Joaquín Rodrigo / arr. Johannes Kafka: 'Adagio' from Concierto de Aranjuez</div>
+        </li>
+        <li class="program-item">
+          <div class="program-item-num">E2</div>
+          <div class="program-item-title">《太空人進行曲》</div>
+          <div class="program-item-arranger">Josef Ullirch / arr. Patrick Prammer: Astronautenmarsch</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section> -->
+
+<!-- ===== 演出寫真 ===== -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <div class="section-label">Gallery</div>
+      <h2 class="section-title">演出寫真</h2>
+      <hr class="gold-divider">
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item wide">
+        <img src="IMAGES/DSCF8485.jpg" alt="VBC 舞台合影">
+      </div>
+      <div class="gallery-item">
+        <img src="IMAGES/30-ViennaBrassConnection-30.webp" alt="銅管演奏特寫">
+      </div>
+      <div class="gallery-item">
+        <img src="IMAGES/84-ViennaBrassConnection-84.webp" alt="VBC 完整編制演出">
+      </div>
+      <div class="gallery-item">
+        <img src="IMAGES/121-ViennaBrassConnection-121.webp" alt="VBC 音樂廳演出">
+      </div>
+      <div class="gallery-item">
+        <img src="IMAGES/28-ViennaBrassConnection-28.webp" alt="銅管樂器特寫">
+      </div>
+      <div class="gallery-item wide">
+        <img src="IMAGES/137-ViennaBrassConnection-137.jpg" alt="小號群演奏">
+      </div>
+      <div class="gallery-item">
+        <img src="IMAGES/130-ViennaBrassConnection-130.jpg" alt="長號群演奏">
+      </div>
+      <div class="gallery-item">
+        <img src="IMAGES/138-ViennaBrassConnection-138.jpg" alt="低音銅管與打擊樂">
+      </div>
+      <div class="gallery-item">
+        <img src="IMAGES/OliverErenyi-22.jpg" alt="指揮與樂團演出">
+      </div>
+      <div class="gallery-item">
+        <img src="IMAGES/27-ViennaBrassConnection-27.jpg" alt="指揮與樂團演出">
+      </div>
+      <div class="gallery-item wide">
+        <img src="IMAGES/DSCF8470.jpg" alt="VBC 排練實況">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 全體樂手 ===== -->
+<section class="ensemble" id="ensemble">
+  <div class="container">
+    <div class="ensemble-header reveal">
+      <div class="section-label">Ensemble</div>
+      <h2 class="section-title">全體樂手</h2>
+      <hr class="gold-divider">
+      <p class="section-subtitle" style="margin: 0 auto;">17 位銅管樂手與 3 位打擊樂手，齊聚維也納，共同奏響。</p>
+    </div>
+    <div class="ensemble-photo reveal">
+      <img src="IMAGES/PhotoCredit_ZopfPhotography.jpg" alt="Vienna Brass Connection 全體樂手合影">
+    </div>
+    <p class="ensemble-caption">Photo Credit: Zopf Photography</p>
+  </div>
+</section>
+
+<!-- ===== 影音區 ===== -->
+<section class="video-section" id="video">
+  <div class="container">
+    <div class="video-header reveal">
+      <div class="section-label">Video</div>
+      <h2 class="section-title">演出影音</h2>
+      <hr class="gold-divider">
+      <p class="section-subtitle" style="margin: 0 auto;">透過影音片段，搶先感受 VBC 的現場舞台能量。</p>
+    </div>
+    <div class="video-links reveal">
+      <a href="https://reurl.cc/4l8YzX" target="_blank" rel="noopener" class="video-link">
+        <span class="video-link-icon">&#9658;</span>
+        VBC 演出片段（一）
+      </a>
+      <a href="https://reurl.cc/qpXaRR" target="_blank" rel="noopener" class="video-link">
+        <span class="video-link-icon">&#9658;</span>
+        VBC 演出片段（二）
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 製作團隊 ===== -->
+<section class="team" id="team">
+  <div class="container">
+    <div class="team-header reveal">
+      <div class="section-label">Production Team</div>
+      <h2 class="section-title">臺灣端製作團隊</h2>
+      <hr class="gold-divider">
+    </div>
+    <div class="team-intro reveal">
+      <p>
+        <strong style="color:var(--fg)">臺灣青年管樂團</strong>成立於 2009 年，長期以臺中為基地，致力於推動管樂演出、青年音樂人才培育、臺灣作品創作與地方文化連結。以「福爾摩沙留聲機」系列作為重要創作軸線，透過委託創作與改編，累積多件以臺灣土地、歷史與文化記憶為核心的管樂作品。本計畫中擔任臺灣端製作與執行單位，負責巡演製作統籌、國際聯繫、場館協調、宣傳整合及現場執行。
+      </p>
+      <a href="https://www.tywo2009.com/" target="_blank" rel="noopener" class="btn-gold" style="margin-top: 1.5rem;">前往臺灣青年管樂團網站 →</a>
+    </div>
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="team-card-role">製作統籌</div>
+        <div class="team-card-name">謝宛軒</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-role">編曲</div>
+        <div class="team-card-name">張菁珊</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-role">國際聯繫</div>
+        <div class="team-card-name">謝宛軒、李心瑀</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-role">場館與技術協調</div>
+        <div class="team-card-name">蔡孟盈</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-role">舞台監督</div>
+        <div class="team-card-name">張智育</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-role">硬體技術</div>
+        <div class="team-card-name">蔡一葦</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-role">交通住宿統籌</div>
+        <div class="team-card-name">陳詩媛</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-role">票務與行銷協調</div>
+        <div class="team-card-name">李佳玲</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-role">宣傳文案與素材整合</div>
+        <div class="team-card-name">張晶婷</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-role">財務與核銷</div>
+        <div class="team-card-name">呂麗觀</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-role">現場執行</div>
+        <div class="team-card-name">臺灣青年管樂團</div>
+      </div>
+      <div class="team-card">
+        <div class="team-card-role">演出團隊接待</div>
+        <div class="team-card-name">臺灣青年管樂團</div>
+      </div>
+    </div>
+    <!-- 社群媒體按鈕（置中獨立行） -->
+<div style="text-align: center; margin-top: 3rem; margin-bottom: 2rem; position: relative; z-index: 1;">
+  <div style="display: inline-flex; gap: 1rem;">
+    <a href="https://www.facebook.com/taiwanyouthband?locale=zh_TW" target="_blank" rel="noopener"
+       style="display: inline-flex; align-items: center; justify-content: center;
+              width: 48px; height: 48px; border-radius: 50%;
+              border: 1px solid var(--gold-dim );
+              background: rgba(201,162,39,0.08);
+              transition: all 0.25s var(--ease-out);"
+       onmouseover="this.style.background='var(--gold)'; this.style.borderColor='var(--gold)'; this.querySelectorAll('svg path').forEach(function(p){p.setAttribute('fill','#0a0a08');})"
+       onmouseout="this.style.background='rgba(201,162,39,0.08)'; this.style.borderColor='var(--gold-dim)'; this.querySelectorAll('svg path').forEach(function(p){p.setAttribute('fill','#c9a227');});">
+      <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#c9a227" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/taiwanyouthwindorchestra/" target="_blank" rel="noopener"
+       style="display: inline-flex; align-items: center; justify-content: center;
+              width: 48px; height: 48px; border-radius: 50%;
+              border: 1px solid var(--gold-dim );
+              background: rgba(201,162,39,0.08);
+              transition: all 0.25s var(--ease-out);"
+       onmouseover="this.style.background='var(--gold)'; this.style.borderColor='var(--gold)'; this.querySelectorAll('svg path').forEach(function(p){p.setAttribute('fill','#0a0a08');})"
+       onmouseout="this.style.background='rgba(201,162,39,0.08)'; this.style.borderColor='var(--gold-dim)'; this.querySelectorAll('svg path').forEach(function(p){p.setAttribute('fill','#c9a227');});">
+      <svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#c9a227" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+      </svg>
+    </a>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- ===== 頁尾 ===== -->
+<footer class="footer">
+  <div class="footer-silhouette"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="IMAGES/logo2.png" alt="VBC Logo" style="height: 56px; width: auto;">
+        <p>
+          Vienna Brass Connection<br>
+          維也納銅管樂團<br><br>
+          One moment. One breath. One sound.<br>
+          充滿能量，專注於唯一重要的事——當下這一刻；此時此地。
+        </p>
+      </div>
+     <div class="footer-col">
+  <h4>聯絡與合作</h4>
+  <p>臺灣端製作：臺灣青年管樂團</p>
+  <p style="color: var(--muted); margin-top: 0.75rem;">【地址】台中市中區自由路二段43號3樓  
+Taichung, Taiwan 400</p>
+  <p>【聯絡電話】0963-129038 謝小姐</p>
+  <p>【e-mail】<a href="mailto:taiwanyouthband@gmail.com" style="color: var(--gold);">taiwanyouthband@gmail.com</a></p>
+  <a href="https://reurl.cc/4l8YzX" target="_blank" rel="noopener" style="margin-top: 0.75rem;">演出影音（一 ）</a>
+  <a href="https://reurl.cc/qpXaRR" target="_blank" rel="noopener">演出影音（二 ）</a>
+</div>
+
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 Vienna Brass Connection × 臺灣青年管樂團｜2026 臺奧文化交流巡演計畫</p>
+      <p class="footer-credit">攝影 Credit: Oliver Erenyi (@truephotobyolivererenyi)</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 導航列滾動效果
+window.addEventListener('scroll', function() {
+  var navbar = document.getElementById('navbar');
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// 手機選單切換
+document.getElementById('navToggle').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// 點擊連結後關閉手機選單
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// 滾動淡入動畫
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(function(el) {
+  observer.observe(el);
+});
+
+// 頁尾 Logo 放大效果 — 滾到底部時觸發
+var footerLogo = document.querySelector('.footer-brand img');
+if (footerLogo) {
+  var footerObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        footerLogo.classList.add('enlarged');
+      } else {
+        footerLogo.classList.remove('enlarged');
+      }
+    });
+  }, { threshold: 0.3 });
+  footerObserver.observe(footerLogo);
+}
+</script>
+<!-- TOP 按鈕 -->
+<button class="top-btn" id="topBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+  <span>TOP</span>
+</button>
+<script>
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('topBtn');
+  if (window.scrollY > 400) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+});
+</script>
+
+</body>
+</html>
