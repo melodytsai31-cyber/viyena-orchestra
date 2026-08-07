@@ -15,8 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: center;
-  justify-content: safe center;
+  justify-content: flex-start;
   gap: 1.5rem;
   overflow-y: auto;
   overflow-x: hidden;
@@ -121,6 +120,18 @@
   color: #000;
 }
 
+  /* ===== 1.png 浮動卡牌置中 ===== */
+{
+  name: '指揮',
+  members: [
+    {
+      name: '藝術總監／指揮',
+      nameEn: 'Artistic Director / Conductor',
+      role: '指揮',
+      icon: '<img src="images/1.png" alt="指揮">'
+    }
+  ]
+},
 
 
 /* ===== 全螢幕圖片觀看 ===== */
@@ -744,33 +755,36 @@ section { padding: 6rem 0; position: relative; }
 
 
 /* 優惠碼 */
-.promo-code{
-
-    color:#fff;
-
-    font-size:0.9rem;
-
-    margin-bottom:20px;
-
+.promo-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
 }
 
-
-.promo-code strong{
-    display:inline-flex;
-    align-items:center;
-    background:rgba(120,85,20,0.35);
-    color:#ffd76a;
-    font-size:1.35rem;
-    font-weight:900;
-    letter-spacing:0.08em;
-    width:75px;
-    height:38px;
-    border-radius:8px;
-    margin-left:10px;
-    border:1px solid rgba(255,215,106,0.55);
+.promo-code strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 75px;
+    height: 38px;
+    margin-left: 0 !important;
+    padding: 0;
+    background: rgba(120, 85, 20, 0.35);
+    color: #ffd76a;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 106, 0.55);
     box-shadow:
-        0 0 10px rgba(255,215,106,0.25),
-        inset 0 0 8px rgba(255,215,106,0.15);
+        0 0 10px rgba(255, 215, 106, 0.25),
+        inset 0 0 8px rgba(255, 215, 106, 0.15);
 }
 
 
@@ -1544,7 +1558,7 @@ section { padding: 6rem 0; position: relative; }
   justify-content: center;
   cursor: pointer;
 }
-/* ===== 樂手卡牌 Carousel 最終修正（務必放在 </style> 正上方）===== */
+
 .ensemble-modal-body {
   display: flex !important;
   flex-direction: column !important;
@@ -1554,17 +1568,7 @@ section { padding: 6rem 0; position: relative; }
   overflow: visible !important;
 }
 
-.ensemble-cards-carousel {
-  width: 100% !important;
-  display: flex !important;
-  gap: 2rem !important;
-  overflow-x: auto !important;
-  scroll-snap-type: x mandatory !important;
-  scroll-behavior: smooth !important;
-  padding: 1rem 4rem 1.5rem !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-}
+
 .ensemble-fullscreen-close {
   position: absolute !important;
   top: 20px !important;
@@ -1746,10 +1750,10 @@ section { padding: 6rem 0; position: relative; }
             </div>
 
 
-            <div class="promo-code">
-                輸入優惠代碼
-                <strong>VBC</strong>
-            </div>
+           <div class="promo-code">
+    <span>輸入優惠代碼</span>
+    <strong>VBC</strong>
+</div>
 
 
             <div class="promo-discount">
