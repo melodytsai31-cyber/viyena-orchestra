@@ -2275,6 +2275,27 @@ a {
 
 }
 </style>
+  <script>
+  // 防止手機瀏覽器重新開啟時恢復上一次的捲動位置
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  function returnToTopWhenOpening() {
+    // 如果網址沒有 #gallery、#tour 之類的錨點，就回到首頁最上方
+    if (!window.location.hash) {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'auto'
+      });
+    }
+  }
+
+  window.addEventListener('load', returnToTopWhenOpening);
+  window.addEventListener('pageshow', returnToTopWhenOpening);
+</script>
+
 </head>
 <body>
 
