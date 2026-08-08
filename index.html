@@ -1581,7 +1581,715 @@ section { padding: 6rem 0; position: relative; }
   justify-content: center;
   cursor: pointer;
 }
+/* =========================================================
+   📱 Responsive Web Design
+   手機 / 平板 / 小尺寸筆電
+   直接貼在 </style> 前面
+   ========================================================= */
 
+/* ---------- 全域防止手機橫向跑版 ---------- */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: clamp(16px, 4vw, 32px);
+  padding-right: clamp(16px, 4vw, 32px);
+}
+
+
+/* =========================================================
+   📱 768px 以下
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* ---------- 導航列 ---------- */
+  .navbar {
+    padding: 0.8rem 0;
+  }
+
+  .navbar.scrolled {
+    padding: 0.55rem 0;
+  }
+
+  .nav-logo img {
+    height: 48px;
+  }
+
+  .navbar.scrolled .nav-logo img {
+    height: 38px;
+  }
+
+  .nav-logo-text {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 100px 30px 40px;
+
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    gap: 1.5rem;
+
+    background: rgba(10, 10, 8, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+
+    font-size: 1rem;
+    padding: 0.8rem 0;
+  }
+
+  .nav-cta {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: 100svh;
+    min-height: 100vh;
+  }
+
+  .hero-bg {
+    background-position: center center;
+  }
+
+  .hero-content {
+    padding: 7rem 0 3rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    line-height: 1.6;
+  }
+
+  .hero-title {
+    font-size: clamp(2.1rem, 10vw, 3.2rem);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-philosophy {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .hero-buttons {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-buttons a,
+  .hero-buttons button {
+    width: 100%;
+    justify-content: center;
+  }
+
+
+  /* ---------- Section ---------- */
+  section {
+    padding: 4rem 0;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+  }
+
+  .section-title {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .gold-divider {
+    width: 45px;
+    margin-bottom: 1.5rem;
+  }
+
+
+  /* =========================================================
+     About
+     ========================================================= */
+
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+
+  /* =========================================================
+     Conductor
+     ========================================================= */
+
+  .conductor-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+
+  /* =========================================================
+     Tour
+     ========================================================= */
+
+  .tour-cards {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem;
+  }
+
+  .tour-card {
+    width: 100%;
+  }
+
+
+  /* =========================================================
+     Program
+     ========================================================= */
+
+  .program-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+
+  /* =========================================================
+     Gallery
+     ========================================================= */
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+  }
+
+  .gallery-item {
+    min-height: 140px;
+  }
+
+
+  /* =========================================================
+     全體樂手
+     ========================================================= */
+
+  .ensemble {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .ensemble-header {
+    margin-bottom: 2rem;
+  }
+
+  .ensemble-photo {
+    width: 100%;
+    border-radius: 3px;
+  }
+
+  .ensemble-caption {
+    font-size: 0.75rem;
+    padding: 0 10px;
+  }
+
+  .ensemble-members {
+    margin-top: 3rem;
+  }
+
+  .ensemble-members-title {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .ensemble-members-subtitle {
+    margin-bottom: 2rem;
+  }
+
+  .ensemble-members-subtitle .subtitle-line1 {
+    font-size: 0.95rem;
+  }
+
+  .ensemble-members-subtitle .subtitle-line2 {
+    font-size: 1.5rem;
+  }
+
+
+  /* ---------- 樂器分類 ---------- */
+
+  .ensemble-categories-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .ensemble-categories-grid .ensemble-category-block {
+    grid-column: auto !important;
+    grid-row: auto !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    min-height: 130px;
+    padding: 1.5rem 1rem;
+    margin: 0 !important;
+  }
+
+  .ensemble-category-name {
+    font-size: 1.15rem;
+  }
+
+  .ensemble-category-block:hover {
+    transform: none;
+  }
+
+
+  /* =========================================================
+     樂手 Modal
+     ========================================================= */
+
+  .ensemble-modal {
+    padding: 0;
+  }
+
+  .ensemble-modal-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .ensemble-modal-header {
+    min-height: 68px;
+    padding: 0.8rem 1rem;
+  }
+
+  .ensemble-modal-title {
+    font-size: 1.1rem;
+    gap: 0.6rem;
+  }
+
+  .ensemble-modal-title-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .ensemble-modal-close {
+    font-size: 1.8rem;
+    padding: 0.3rem;
+  }
+
+  .ensemble-modal-body {
+    width: 100%;
+    gap: 0.5rem;
+    overflow-x: hidden;
+  }
+
+
+  /* =========================================================
+     樂手卡牌
+     ========================================================= */
+
+  .ensemble-cards-carousel {
+    width: 100%;
+    gap: 12px;
+
+    padding: 1rem 16px 1.5rem;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ensemble-carousel-card {
+    flex: 0 0 calc(100vw - 50px);
+
+    width: calc(100vw - 50px);
+    height: calc(100vw - 50px);
+
+    max-height: 520px;
+
+    scroll-snap-align: center;
+
+    border-radius: 10px;
+  }
+
+  .ensemble-carousel-card:hover,
+  .ensemble-carousel-card.active {
+    transform: none;
+  }
+
+
+  /* ---------- 成員卡牌 ---------- */
+
+  .ensemble-member-card {
+    width: calc(100vw - 50px);
+    min-width: calc(100vw - 50px);
+
+    min-height: auto;
+
+    padding: 1.2rem;
+
+    border-radius: 14px;
+  }
+
+  .ensemble-member-card:hover {
+    transform: none;
+  }
+
+  .ensemble-member-photo {
+    width: min(65vw, 240px);
+    height: min(65vw, 240px);
+
+    margin-bottom: 1rem;
+    border-radius: 14px;
+  }
+
+  .ensemble-member-name {
+    font-size: 1.25rem;
+    margin-top: 10px;
+  }
+
+  .ensemble-member-name-en {
+    font-size: 0.85rem;
+  }
+
+  .ensemble-member-role {
+    font-size: 0.85rem;
+  }
+
+
+  /* =========================================================
+     全螢幕圖片
+     ========================================================= */
+
+  .ensemble-fullscreen-content {
+    width: 100vw;
+    height: 100svh;
+  }
+
+  .ensemble-fullscreen-image {
+    width: 100vw;
+    height: 100svh;
+    object-fit: contain;
+  }
+
+  .ensemble-fullscreen-close {
+    top: 15px;
+    right: 15px;
+
+    width: 46px;
+    height: 46px;
+
+    font-size: 28px;
+  }
+
+  .direct-image-fullscreen img {
+    width: 100vw;
+    height: auto;
+    max-width: 100vw;
+    max-height: 90vh;
+  }
+
+  .direct-image-fullscreen-close {
+    top: 15px;
+    right: 15px;
+
+    width: 46px;
+    height: 46px;
+
+    font-size: 30px;
+    line-height: 42px;
+  }
+
+  .member-fullscreen img {
+    width: 100vw;
+    height: 100svh;
+    object-fit: contain;
+  }
+
+  .member-fullscreen-close {
+    top: 15px;
+    right: 15px;
+
+    width: 46px;
+    height: 46px;
+
+    font-size: 30px;
+  }
+
+
+  /* ---------- 按鈕 ---------- */
+
+  .btn-gold,
+  .btn-outline {
+    min-height: 46px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+  }
+
+
+  /* ---------- 文字防止超出 ---------- */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  a {
+    overflow-wrap: break-word;
+  }
+
+}
+
+
+/* =========================================================
+   📱 480px 以下：手機
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .nav-logo img {
+    height: 42px;
+  }
+
+  .navbar.scrolled .nav-logo img {
+    height: 34px;
+  }
+
+  .hero-content {
+    padding-top: 6.5rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.7rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.88rem;
+  }
+
+  .hero-philosophy {
+    font-size: 0.95rem;
+  }
+
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .gallery-item {
+    min-height: 180px;
+  }
+
+
+  /* 分類卡牌 */
+  .ensemble-category-block {
+    min-height: 115px !important;
+    padding: 1.2rem 0.8rem !important;
+  }
+
+  .ensemble-category-name {
+    font-size: 1.05rem;
+  }
+
+
+  /* 樂手卡牌 */
+  .ensemble-carousel-card {
+    flex-basis: calc(100vw - 32px);
+    width: calc(100vw - 32px);
+    height: calc(100vw - 32px);
+  }
+
+  .ensemble-member-card {
+    width: calc(100vw - 32px);
+    min-width: calc(100vw - 32px);
+  }
+
+  .ensemble-member-photo {
+    width: min(62vw, 220px);
+    height: min(62vw, 220px);
+  }
+
+  .ensemble-member-name {
+    font-size: 1.15rem;
+  }
+
+
+  /* Modal */
+  .ensemble-modal-header {
+    padding: 0.7rem 0.8rem;
+  }
+
+  .ensemble-modal-title {
+    font-size: 1rem;
+  }
+
+}
+
+
+/* =========================================================
+   📲 平板 769px - 1024px
+   ========================================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+  }
+
+  .nav-cta {
+    padding: 0.7rem 1.2rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+  }
+
+  .about-grid,
+  .conductor-grid {
+    gap: 2rem;
+  }
+
+  .tour-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .program-layout {
+    gap: 2rem;
+  }
+
+  .ensemble-categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ensemble-carousel-card {
+    flex-basis: 300px;
+    height: 420px;
+  }
+
+}
+
+
+/* =========================================================
+   🖥️ 防止超寬內容造成水平滾動
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .container {
+    max-width: 100%;
+  }
+
+  .hero-spotlight {
+    width: 450px;
+  }
+
+  .ensemble-photo {
+    max-width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   📱 手機觸控優化
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .ensemble-category-block:hover,
+  .ensemble-member-card:hover,
+  .ensemble-carousel-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .nav-links a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
 </style>
 </head>
 <body>
