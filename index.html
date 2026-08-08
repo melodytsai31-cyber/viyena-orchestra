@@ -120,18 +120,6 @@
   color: #000;
 }
 
-  /* ===== 1.png 浮動卡牌置中 ===== */
-{
-  name: '指揮',
-  members: [
-    {
-      name: '藝術總監／指揮',
-      nameEn: 'Artistic Director / Conductor',
-      role: '指揮',
-      icon: '<img src="1.png" alt="指揮">'
-    }
-  ]
-},
 
 
 /* ===== 全螢幕圖片觀看 ===== */
@@ -3099,14 +3087,14 @@ window.addEventListener('scroll', function() {
 })();
 </script>
 
-</body>
-</html>
+
 
 <!-- 扇子卡牌浮現容器 -->
 <div class="ensemble-fan-overlay" id="ensembleFanOverlay"></div>
 <div class="ensemble-fan-container" id="ensembleFanContainer"></div>
 
-
+</body>
+</html>
 
 
 <!-- 全螢幕圖片檢視 -->
@@ -3126,7 +3114,8 @@ function openFanCards(categoryIndex) {
     card.innerHTML = `<img src="${member.image}">`;
     card.style.transform = `rotateY(${(index - (category.members.length - 1) / 2) * 15}deg) translateZ(200px)`;
     card.onclick = () => openMemberFullscreen(member.image);
-    carousel.appendChild(card);
+    container.appendChild(card);
+;
   });
   
   container.classList.add('open');
@@ -3211,24 +3200,6 @@ function openMemberFullscreen(imageSrc){
   document.body.appendChild(overlay);
   document.body.style.overflow = 'hidden';
 }
-
-
-
-
-
-  // 按 ESC 也可以關閉
-  function closeByEscape(event) {
-    if (event.key === 'Escape') {
-      fullscreen.remove();
-      document.removeEventListener('keydown', closeByEscape);
-    }
-  }
-
-  document.addEventListener('keydown', closeByEscape);
-  document.body.appendChild(fullscreen);
-
-
-
 
 
 
