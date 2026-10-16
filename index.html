@@ -521,11 +521,31 @@ img { display: block; max-width: 100%; }
 }
 
 .hero-philosophy {
-  font-family: "Cormorant Garamond", serif;
-  font-style: normal; font-size: 1.3rem;
-  color: var(--gold-light); margin-bottom: 2.5rem;
-  max-width: 480px;
+  display: inline-block;
+  max-width: min(100%, 34rem);
+  margin: 0 0 2rem;
+  padding: 0.55rem 1rem 0.55rem 1.15rem;
+
+  color: #fff2c2;
+  font-family: "Noto Serif TC", serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 500;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+
+  background: linear-gradient(
+    90deg,
+    rgba(10, 10, 8, 0.68),
+    rgba(10, 10, 8, 0.32)
+  );
+  border-left: 2px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
 }
+
 .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
 .btn-gold {
   display: inline-flex; align-items: center; gap: 0.5rem;
