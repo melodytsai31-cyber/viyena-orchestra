@@ -483,15 +483,37 @@ img { display: block; max-width: 100%; }
 }
 .hero-title .gold { color: var(--gold); }
 .hero-subtitle {
-  color: #111111;
-  background-color: rgba(235, 235, 235, 0.65);
-  display: table;
+  .hero-subtitle {
+  display: inline-block;
   width: fit-content;
   max-width: calc(100% - 2rem);
-  padding: 0.6rem 1rem;
-  border-radius: 4px;
-  line-height: 1.8;
   box-sizing: border-box;
+
+  /* 字體 */
+  font-family: "Noto Serif TC", "Songti TC", serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  color: #24211d;
+
+  /* 半透明霧面效果 */
+  background: rgba(245, 243, 237, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* 柔和邊框與圓角 */
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-left: 3px solid rgba(190, 153, 62, 0.9);
+  border-radius: 5px 16px 16px 5px;
+
+  /* 內距與按鈕間距 */
+  padding: 0.65rem 1.2rem;
+  margin: 0 0 1.8rem;
+  vertical-align: top;
+
+  /* 淡淡的立體感 */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 .hero-philosophy {
   font-family: "Cormorant Garamond", serif;
