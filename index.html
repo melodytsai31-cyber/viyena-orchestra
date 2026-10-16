@@ -2607,24 +2607,7 @@ a {
 }
 
 </style>
- <script>
-  // 防止手機瀏覽器還原上次的捲動位置
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-
-  function returnToTopWhenOpening() {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'auto'
-    });
-  }
-
-  window.addEventListener('load', returnToTopWhenOpening);
-  window.addEventListener('pageshow', returnToTopWhenOpening);
-</script>
-
+ 
 </head>
 <body>
 
@@ -3826,5 +3809,38 @@ document.addEventListener('keydown', function(e) {
   }
 });
 </script>
+  <script>
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  function forceTopOnOpen() {
+    // 移除網址末尾的 #video 等錨點
+    if (window.location.hash) {
+      history.replaceState(
+        null,
+        '',
+        window.location.pathname + window.location.search
+      );
+    }
+
+    // 暫時關閉平滑捲動，避免回頂端動作被動畫或還原位置蓋過
+    const root = document.documentElement;
+    const oldBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => window.scrollTo(0, 0));
+
+    // 再補一次，處理手機瀏覽器延後還原捲動位置
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      root.style.scrollBehavior = oldBehavior;
+    }, 300);
+  }
+
+  window.addEventListener('pageshow', forceTopOnOpen);
+</script>
+
 </body>
 </html>
