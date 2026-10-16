@@ -521,29 +521,24 @@ img { display: block; max-width: 100%; }
 }
 
 .hero-philosophy {
-  display: inline-block;
-  max-width: min(100%, 34rem);
-  margin: 0 0 2rem;
-  padding: 0.55rem 1rem 0.55rem 1.15rem;
+  max-width: 480px;
+  margin-bottom: 2.5rem;
 
-  color: #fff2c2;
-  font-family: "Noto Serif TC", serif;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-family: "Noto Serif TC", "Songti TC", serif;
+  font-size: 1.3rem;
   font-weight: 500;
   line-height: 1.7;
   letter-spacing: 0.08em;
+  font-style: normal;
 
-  background: linear-gradient(
-    90deg,
-    rgba(10, 10, 8, 0.68),
-    rgba(10, 10, 8, 0.32)
-  );
-  border-left: 2px solid var(--gold);
-  border-radius: 0 6px 6px 0;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+  color: #fff4dc;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
+}
+
+.hero-philosophy-key {
+  color: var(--gold-light);
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
 }
 
 .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -2677,8 +2672,9 @@ a {
       <p>One sound.</p>
     </h1>
    <p class="hero-philosophy">
-  「此時此地，充滿能量，專注當下！」
-  </p>
+  「<span class="hero-philosophy-key">此時此地</span>，充滿能量，<span class="hero-philosophy-key">專注當下</span>！」
+</p>
+
    <p class="hero-subtitle">
   <span class="hero-highlight">以大型銅管與打擊樂器編制，</span>  
 
