@@ -40,6 +40,17 @@
   font-size: 0.78rem;
   white-space: nowrap;
 }
+.tour-card-price-list.miaoli-price-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.tour-card-price-list.miaoli-price-list span {
+  justify-content: center;
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
+}
 
 /* 新竹限定大師班亮點區 */
 .masterclass-feature {
@@ -2564,7 +2575,7 @@ a {
  <!-- 把苗栗票價貼在這裡 -->
 <div class="tour-card-price">
   <span class="tour-card-price-label">票價</span>
-  <div class="tour-card-price-list">
+ <div class="tour-card-price-list miaoli-price-list">
     <span>NT$300</span>
     <span>NT$500</span>
     <span>NT$700</span>
