@@ -1233,30 +1233,23 @@ section { padding: 6rem 0; position: relative; }
 }
 
 /* ===== 影音區 ===== */
-.video-section { background: var(--bg); }
-.video-header { text-align: center; margin-bottom: 3rem; }
-.video-header .gold-divider { margin: 0 auto 1.5rem; }
-.video-links {
-  display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;
-}
-.video-link {
-  display: inline-flex; align-items: center; gap: 0.75rem;
-  padding: 1rem 2rem; background: var(--card);
-  border: 1px solid var(--border); border-radius: 4px;
-  color: var(--fg); font-size: 0.9rem;
-  transition: all 0.25s var(--ease-out);
-}
-.video-link:hover {
-  border-color: var(--gold); color: var(--gold);
-  transform: translateY(-2px);
-}
-.video-link-icon {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: rgba(201,162,39,0.15);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem; color: var(--gold);
+.video-embed {
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--border );
+  border-radius: 8px;
 }
 
+.video-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 /* ===== 浮動購票按鈕 ===== */
 .floating-ticket-btn {
   position: fixed; bottom: 5rem; right: 2rem; z-index: 98;
@@ -2782,17 +2775,17 @@ a {
       <hr class="gold-divider">
       <p class="section-subtitle" style="margin: 0 auto;">透過影音片段，搶先感受 VBC 的現場舞台能量。</p>
     </div>
-    <div class="video-links reveal">
-      <a href="https://reurl.cc/4l8YzX" target="_blank" rel="noopener" class="video-link">
-        <span class="video-link-icon">▶</span>
-        VBC 演出片段（一）
-      </a>
-      <a href="https://reurl.cc/qpXaRR" target="_blank" rel="noopener" class="video-link">
-        <span class="video-link-icon">▶</span>
-        VBC 演出片段（二）
-      </a>
-    </div>
-  </div>
+   <div class="video-embed reveal">
+  <iframe
+    src="https://www.youtube.com/embed/HcgdAVqNRhc"
+    title="VBC 為臺灣巡演製作的影片"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+    loading="lazy">
+  </iframe>
+</div>
+</div>
 </section>
 
 <!-- ===== 製作團隊 ===== -->
