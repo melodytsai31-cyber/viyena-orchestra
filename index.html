@@ -2607,22 +2607,18 @@ a {
 }
 
 </style>
-  <script>
-  // 防止手機瀏覽器重新開啟時恢復上一次的捲動位置
+ <script>
+  // 防止手機瀏覽器還原上次的捲動位置
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
 
   function returnToTopWhenOpening() {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'auto'
-  });
-}
-
-      });
-    }
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'auto'
+    });
   }
 
   window.addEventListener('load', returnToTopWhenOpening);
