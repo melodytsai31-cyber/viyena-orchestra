@@ -2614,12 +2614,13 @@ a {
   }
 
   function returnToTopWhenOpening() {
-    // 如果網址沒有 #gallery、#tour 之類的錨點，就回到首頁最上方
-    if (!window.location.hash) {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'auto'
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'auto'
+  });
+}
+
       });
     }
   }
