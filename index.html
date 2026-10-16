@@ -10,98 +10,6 @@
 <link rel="icon" href="logo2.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* 巡演票價 */
-.tour-card-price {
-  margin: 1rem 0 1.25rem;
-}
-
-.tour-card-price-label {
-  display: block;
-  margin-bottom: 0.6rem;
-  color: var(--gold);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-}
-
-.tour-card-price-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
-.tour-card-price-list span {
-  display: inline-flex;
-  padding: 0.35rem 0.6rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: rgba(201, 162, 39, 0.08);
-  color: var(--fg);
-  font-size: 0.78rem;
-  white-space: nowrap;
-}
-.tour-card-price-list.miaoli-price-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.45rem;
-}
-
-.tour-card-price-list.miaoli-price-list span {
-  justify-content: center;
-  padding-left: 0.35rem;
-  padding-right: 0.35rem;
-}
-
-/* 新竹限定大師班亮點區 */
-.masterclass-feature {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  padding: 1.5rem 1.75rem;
-  border: 1px solid var(--gold-dim);
-  border-left: 4px solid var(--gold);
-  border-radius: 8px;
-  background: linear-gradient(
-    135deg,
-    rgba(201, 162, 39, 0.12),
-    rgba(201, 162, 39, 0.04)
-  );
-}
-
-.masterclass-feature-label {
-  display: inline-block;
-  margin-bottom: 0.35rem;
-  color: var(--gold);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-}
-
-.masterclass-feature h3 {
-  margin-bottom: 0.4rem;
-  color: var(--fg);
-  font-size: 1.2rem;
-}
-
-.masterclass-feature p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.7;
-}
-
-@media (max-width: 768px) {
-  .masterclass-feature {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .masterclass-feature .btn-outline {
-    justify-content: center;
-  }
-}
-
 .ensemble-modal-body {
   display: flex;
   flex-direction: column;
@@ -726,6 +634,105 @@ section { padding: 6rem 0; position: relative; }
 }
 
 /* ===== 巡演資訊 ===== */
+.tour { background: var(--bg); }
+.tour-header { text-align: center; margin-bottom: 4rem; }
+.tour-header .gold-divider { margin: 0 auto 1.5rem; }
+.tour-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+@media (max-width: 768px) {
+  .tour-cards { grid-template-columns: 1fr; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tour-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.tour-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2rem;
+  transition: all 0.3s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+.tour-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out);
+}
+.tour-card:hover {
+  border-color: var(--border-hover);
+  background: var(--card-hover);
+  transform: translateY(-4px);
+}
+.tour-card:hover::before { transform: scaleX(1); }
+.tour-card-date {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.tour-card-date small {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 0.25rem;
+}
+.tour-card-city {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.tour-card-title {
+  font-family: "Noto Serif TC", serif;
+  font-size: 0.95rem;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.tour-card-title-en {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 0.8rem;
+  color: var(--muted-light);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+.tour-card-venue {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.tour-card-venue strong { color: var(--fg); font-weight: 500; }
+.tour-card-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.tour-card-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: rgba(201, 162, 39, 0.1);
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.25rem;
+}
+
 /* 巡演票價 */
 .tour-card-price {
   margin: 1rem 0 1.25rem;
@@ -3432,4 +3439,4 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 </body>
-</html
+</html>
