@@ -720,70 +720,97 @@ section { padding: 6rem 0; position: relative; }
 }
 
 /* ===== 巡演資訊 ===== */
-.tour { background: var(--bg); }
-.tour-header { text-align: center; margin-bottom: 4rem; }
-.tour-header .gold-divider { margin: 0 auto 1.5rem; }
-.tour-cards {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+/* 巡演票價 */
+.tour-card-price {
+  margin: 1rem 0 1.25rem;
+}
+
+.tour-card-price-label {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.tour-card-price-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tour-card-price-list span {
+  display: inline-flex;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(201, 162, 39, 0.08);
+  color: var(--fg);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+/* 苗栗：第一行 3 個，第二行 2 個 */
+.tour-card-price-list.miaoli-price-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tour-card-price-list.miaoli-price-list span {
+  justify-content: center;
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
+}
+
+/* 新竹限定大師班亮點區 */
+.masterclass-feature {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--gold-dim);
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 162, 39, 0.12),
+    rgba(201, 162, 39, 0.04)
+  );
 }
-@media (max-width: 768px) { .tour-cards { grid-template-columns: 1fr; } }
-.tour-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 4px; padding: 2rem;
-  transition: all 0.3s var(--ease-out);
-  position: relative; overflow: hidden;
+
+.masterclass-feature-label {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  color: var(--gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
 }
-.tour-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0;
-  height: 3px; background: var(--gold);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.4s var(--ease-out);
+
+.masterclass-feature h3 {
+  margin-bottom: 0.4rem;
+  color: var(--fg);
+  font-size: 1.2rem;
 }
-.tour-card:hover {
-  border-color: var(--border-hover); background: var(--card-hover);
-  transform: translateY(-4px);
-}
-.tour-card:hover::before { transform: scaleX(1); }
-.tour-card-date {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 2.5rem; font-weight: 700; color: var(--gold);
-  line-height: 1; margin-bottom: 0.5rem;
-}
-.tour-card-date small {
-  font-size: 0.9rem; color: var(--muted);
-  font-weight: 400; margin-left: 0.25rem;
-}
-.tour-card-city {
-  font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;
-}
-.tour-card-title {
-  font-family: "Noto Serif TC", serif;
-  font-size: 0.95rem; color: var(--gold-light);
-  margin-bottom: 1rem; line-height: 1.5;
-}
-.tour-card-title-en {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 0.8rem; color: var(--muted-light);
-  margin-bottom: 1rem; font-style: italic;
-}
-.tour-card-venue {
-  font-size: 0.85rem; color: var(--muted);
-  margin-bottom: 1rem; padding-top: 1rem;
-  border-top: 1px solid var(--border);
-}
-.tour-card-venue strong { color: var(--fg); font-weight: 500; }
-.tour-card-desc {
-  font-size: 0.85rem; color: var(--muted);
+
+.masterclass-feature p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
   line-height: 1.7;
 }
-.tour-card-badge {
-  display: inline-block; padding: 0.25rem 0.75rem;
-  background: rgba(201, 162, 39, 0.1);
-  border: 1px solid var(--gold-dim);
-  border-radius: 2px; font-size: 0.7rem;
-  color: var(--gold); letter-spacing: 0.1em;
-  margin-bottom: 1.25rem;
+
+@media (max-width: 768px) {
+  .masterclass-feature {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .masterclass-feature .btn-outline {
+    justify-content: center;
+  }
 }
 
 /* ===== 苗北優惠新版 ===== */
@@ -2552,6 +2579,7 @@ a {
 </section>
 
 <!-- ===== 2026 巡演 ===== -->
+<!-- ===== 2026 巡演 ===== -->
 <section class="tour" id="tour">
   <div class="container">
     <div class="tour-header reveal">
@@ -2562,85 +2590,106 @@ a {
         以「一項計畫、三個節點、多重效益」為規劃原則，苗栗、臺北、新竹三站各自承擔不同任務，形成完整而互補的計畫結構。
       </p>
     </div>
+
     <div class="tour-cards">
+
       <!-- 苗栗場次 -->
       <div class="tour-card reveal">
         <div class="tour-card-badge">第一站</div>
         <div class="tour-card-date">12/11<small>2026 Fri</small></div>
         <div class="tour-card-city">苗栗</div>
+
         <div class="tour-card-venue">
-          <strong>苗北藝文中心演藝廳</strong><br>
+          <strong>苗北藝文中心演藝廳</strong>  
+
           主辦單位：苗北藝術節／苗北藝文中心
         </div>
- <!-- 把苗栗票價貼在這裡 -->
-<div class="tour-card-price">
-  <span class="tour-card-price-label">票價</span>
- <div class="tour-card-price-list miaoli-price-list">
-    <span>NT$300</span>
-    <span>NT$500</span>
-    <span>NT$700</span>
-    <span>NT$1,200</span>
-    <span>NT$1,800</span>
-  </div>
-</div>
+
+        <div class="tour-card-price">
+          <span class="tour-card-price-label">票價（新臺幣）</span>
+          <div class="tour-card-price-list miaoli-price-list">
+            <span>NT$300</span>
+            <span>NT$500</span>
+            <span>NT$700</span>
+            <span>NT$1,200</span>
+            <span>NT$1,800</span>
+          </div>
+        </div>
+
         <div style="display:flex; gap:0.75rem; margin-top:1.25rem; flex-wrap:wrap;">
-          <a href="https://www.opentix.life/event/2076489805923938305" target="_blank" rel="noopener" class="btn-gold" style="display:inline-flex; padding:0.6rem 1.5rem; font-size:0.8rem;">
+          <a
+            href="https://www.opentix.life/event/2076489805923938305"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-gold"
+            style="display:inline-flex; padding:0.6rem 1.5rem; font-size:0.8rem;">
             立即購票
           </a>
-  <a href="https://melodytsai31-cyber.github.io/viyena-orchestra/pre-talk.html"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="btn-outline"
-   style="display:inline-flex; padding:0.6rem 1.5rem; font-size:0.8rem;">
-  演前導聆資訊
-</a>
-        </div>
-        <!-- 優惠資訊 -->
-<div class="tour-card-promo">
 
-    <div class="tour-card-promo-box">
-
-        <div class="tour-card-promo-title">
-            維也納銅管樂團｜專屬購票優惠
+          <a
+            href="https://melodytsai31-cyber.github.io/viyena-orchestra/pre-talk.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-outline"
+            style="display:inline-flex; padding:0.6rem 1.5rem; font-size:0.8rem;">
+            演前導聆資訊
+          </a>
         </div>
 
-        <div class="tour-card-promo-content">
+        <!-- 苗栗場優惠 -->
+        <div class="tour-card-promo">
+          <div class="tour-card-promo-box">
+            <div class="tour-card-promo-title">
+              維也納銅管樂團｜專屬購票優惠
+            </div>
 
-            <div class="promo-ticket">
-                購票時選擇<br>
+            <div class="tour-card-promo-content">
+              <div class="promo-ticket">
+                購票時選擇  
+
                 <strong>
-    <span class="gold-text">演出單位-維也納銅管樂團</span>
-    <span class="white-text"> 此折扣方案</span>
-</strong>
-            </div>
+                  <span class="gold-text">演出單位-維也納銅管樂團</span>
+                  <span class="white-text">此折扣方案</span>
+                </strong>
+              </div>
 
+              <div class="promo-code">
+                <span>輸入優惠代碼</span>
+                <strong>VBC</strong>
+              </div>
 
-           <div class="promo-code">
-    <span>輸入優惠代碼</span>
-    <strong>VBC</strong>
-</div>
-
-
-            <div class="promo-discount">
+              <div class="promo-discount">
                 即享 <strong>7折優惠</strong>
+              </div>
             </div>
-
+          </div>
         </div>
-
-    </div>
-
-</div>
-</div>
-
+      </div>
 
       <!-- 臺北場次 -->
       <div class="tour-card reveal">
         <div class="tour-card-badge">第二站</div>
         <div class="tour-card-date">12/12<small>2026 Sat</small></div>
         <div class="tour-card-city">臺北</div>
+
         <div class="tour-card-venue">
-          <strong>國家音樂廳</strong><br>
+          <strong>國家音樂廳</strong>  
+
           主辦單位：國際扶輪 3523 地區
+        </div>
+
+        <div class="tour-card-price">
+          <span class="tour-card-price-label">票價（新臺幣 ）</span>
+          <div class="tour-card-price-list">
+            <span>NT$500</span>
+            <span>NT$1,000</span>
+            <span>NT$1,500</span>
+            <span>NT$2,000</span>
+            <span>NT$2,500</span>
+            <span>NT$2,800</span>
+            <span>NT$3,200</span>
+            <span>NT$3,800</span>
+          </div>
         </div>
       </div>
 
@@ -2649,94 +2698,81 @@ a {
         <div class="tour-card-badge">第三站</div>
         <div class="tour-card-date">12/13<small>2026 Sun</small></div>
         <div class="tour-card-city">新竹</div>
+
         <div class="tour-card-venue">
-          <strong>新竹縣政府文化局演藝廳</strong><br>
+          <strong>新竹縣政府文化局演藝廳</strong>  
+
           主辦單位：新竹縣政府文化局
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ===== 演出曲目 ===== -->
-<section class="program" id="program">
-  <div class="container">
-    <div class="program-header reveal">
-      <div class="section-label">Program</div>
-      <h2 class="section-title">演出曲目</h2>
-      <hr class="gold-divider">
-      <p class="section-subtitle" style="margin: 0 auto;">
-        涵蓋電影配樂、交響作品改編、跨界作品、原創作品與臺灣特別呈現，展現 VBC 在大型銅管與打擊編制上的多元聲響處理能力。全場約 100 分鐘，含中場休息 20 分鐘。
-      </p>
+        <div class="tour-card-price">
+          <span class="tour-card-price-label">票價（新臺幣）</span>
+          <div class="tour-card-price-list">
+            <span>NT$300</span>
+            <span>NT$500</span>
+            <span>NT$700</span>
+            <span>NT$1,200</span>
+            <span>NT$1,500</span>
+            <span>NT$1,800</span>
+          </div>
+        </div>
+
+        <div style="margin-top:1.25rem;">
+          <a
+            href="https://www.opentix.life/event/2106995701583536129"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-gold"
+            style="display:inline-flex; padding:0.6rem 1.5rem; font-size:0.8rem;">
+            立即購票
+          </a>
+        </div>
+
+        <!-- 新竹場優惠 -->
+        <div class="tour-card-promo-box">
+          <div class="tour-card-promo-title">
+            臺灣青年管樂團粉絲專屬優惠
+          </div>
+
+          <div class="tour-card-promo-content">
+            <div class="promo-ticket">
+              購票時選擇  
+
+              <strong>
+                <span class="gold-text">臺灣青年管樂團粉絲優惠</span>
+                <span class="white-text">此折扣方案</span>
+              </strong>
+            </div>
+
+            <div class="promo-code">
+              <span>輸入優惠代碼</span>
+              <strong>VBC</strong>
+            </div>
+
+            <div class="promo-discount">
+              即享 <strong>85折優惠</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="program-layout">
-      <!-- 上半場 -->
-      <div class="program-half reveal">
-        <h3>First Half <span class="label-zh">上半場</span></h3>
-        <ul class="program-list">
-          <li class="program-item">
-            <div class="program-item-num">01</div>
-            <div class="program-item-title">《闇黑無界：星際爭霸戰》</div>
-            <div class="program-item-arranger">Michael Giacchino / arr. Normen Handrow: Star Trek – Into Darkness</div>
-          </li>
-          <li class="program-item">
-            <div class="program-item-num">02</div>
-            <div class="program-item-title">〈嘉碧雅之歌〉</div>
-            <div class="program-item-arranger">Stefan Nilsson / arr. Manuel Egger: 'Gabriela's Song'</div>
-          </li>
-          <li class="program-item">
-            <div class="program-item-num">03</div>
-            <div class="program-item-title">《寶島意象》(臺灣特別呈獻)</div>
-            <div class="program-item-arranger">Ching-Shan Chang: Tapestry of Formosa (Taiwan Special Presentation)</div>
-          </li>
-          <li class="program-item">
-            <div class="program-item-num">04</div>
-            <div class="program-item-title">〈愛之書〉</div>
-            <div class="program-item-arranger">Peter Gabriel / arr. Albert Wieder: 'The Book of Love'</div>
-          </li>
-          <li class="program-item">
-            <div class="program-item-num">05</div>
-            <div class="program-item-title">《藍色狂想曲》</div>
-            <div class="program-item-arranger">George Gershwin / arr. Johannes Kafka: Rhapsody in Blue</div>
-          </li>
-        </ul>
+
+    <!-- 新竹場限定大師班：獨立區塊 ，放在三場巡演卡片下方 -->
+    <div class="masterclass-feature reveal">
+      <div>
+        <span class="masterclass-feature-label">新竹場限定活動</span>
+        <h3>銅管室內樂大師班｜指導及旁聽</h3>
+        <p>大師班詳細資訊及報名方式，請見活動報名頁。</p>
       </div>
-      <!-- 下半場 -->
-      <div class="program-half reveal">
-        <h3>Second Half <span class="label-zh">下半場</span></h3>
-        <ul class="program-list">
-          <li class="program-item">
-            <div class="program-item-num">06</div>
-            <div class="program-item-title">浴血船長主題曲，選自電影《浴血船長》</div>
-            <div class="program-item-arranger">Erich Wolfgang Korngold / arr. Johannes Kafka: 'Main Title' from Captain Blood</div>
-          </li>
-          <li class="program-item">
-            <div class="program-item-num">07</div>
-            <div class="program-item-title">〈就這樣吧〉</div>
-            <div class="program-item-arranger">Billy Joel / arr. Manuel Egger: 'And So It Goes'</div>
-          </li>
-          <li class="program-item">
-            <div class="program-item-num">08</div>
-            <div class="program-item-title">《約翰・威廉斯金曲選粹》</div>
-            <div class="program-item-arranger">John Williams／arr. Normen Handrow: Williams aba Gold</div>
-          </li>
-          <li class="program-item">
-            <div class="program-item-num">09</div>
-            <div class="program-item-title">《藍色連結》第二、三樂章</div>
-            <div class="program-item-arranger">Hamid Medjebeur: Blue Connection, Movements II and III</div>
-          </li>
-          <li class="program-item">
-            <div class="program-item-num">10</div>
-            <div class="program-item-title">《ID4 星際終結者》</div>
-            <div class="program-item-arranger">David Arnold / arr. Christoph Glantschnig: Independence Day</div>
-          </li>
-          <li class="program-item">
-            <div class="program-item-num">11</div>
-            <div class="program-item-title">《來自地獄的問候——維也納吃維也納》</div>
-            <div class="program-item-arranger">Leonhard Paul: Gruß aus der Hölle – Wien isst Wien</div>
-          </li>
-        </ul>
-      </div>
+
+      <a
+        href="https://forms.gle/9BgQF2MmxaTfcECr6"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline">
+        查看詳情／前往報名 →
+      </a>
     </div>
   </div>
 </section>
