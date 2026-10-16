@@ -385,12 +385,22 @@ img { display: block; max-width: 100%; }
   font-family: "Noto Sans TC", sans-serif; font-weight: 400;
 }
 .nav-links { display: flex; gap: 2rem; align-items: center; }
+/* 導航列選項：色塊凸顯 */
 .nav-links a {
-  font-size: 0.9rem; color: var(--muted);
-  transition: color 0.2s var(--ease-out);
-  position: relative; padding: 0.25rem 0;
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  color: var(--gold-light);
+  background-color: rgba(201, 168, 106, 0.12);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
-.nav-links a:hover { color: var(--gold); }
+
+/* 滑鼠移上去時 */
+.nav-links a:hover {
+  color: #1a1a1a;
+  background-color: var(--gold-light);
+}
 .nav-links a::after {
   content: ''; position: absolute; bottom: -2px; left: 0;
   width: 0; height: 1px; background: var(--gold);
@@ -408,6 +418,17 @@ img { display: block; max-width: 100%; }
 .nav-toggle span {
   display: block; width: 24px; height: 2px; background: var(--fg);
   margin: 5px 0; transition: 0.3s var(--ease-out);
+.nav-links a.nav-cta {
+  color: #1a1a1a;
+  background-color: var(--gold-light);
+  border: 2px solid var(--gold-light);
+  border-radius: 6px;
+}
+
+.nav-links a.nav-cta:hover {
+  color: var(--gold-light);
+  background-color: transparent;
+}
 }
 @media (max-width: 768px) {
   .nav-links {
@@ -2327,7 +2348,7 @@ a {
       <p>One sound.</p>
     </h1>
    <p class="hero-philosophy">
-  「此時此地，充滿能量，專注當下!」
+  「此時此地，充滿能量，專注當下！」
   </p>
     <p class="hero-subtitle">
       來自維也納的 17 位銅管樂手與 3 位打擊樂手，首度來臺。<br>
