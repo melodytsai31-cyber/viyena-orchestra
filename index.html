@@ -2628,19 +2628,55 @@ a {
 }
 
 .cds-notice-price {
-  margin-bottom: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0 0 0.6rem;
+}
+
+.cds-price-label {
+  color: var(--muted);
+  font-family: "Noto Serif TC", serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.cds-price-amount {
   color: var(--gold-light);
-  font-size: 1.35rem;
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+  font-size: 2rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.cds-price-from {
+  color: var(--gold);
+  font-family: "Noto Serif TC", serif;
+  font-size: 0.95rem;
 }
 
 .cds-notice-detail {
   margin: 0;
-  color: var(--muted);
   font-size: 0.9rem;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
+.cds-offer-line {
+  color: rgba(245, 240, 232, 0.85);
+}
+
+.cds-limited-line {
+  color: var(--muted);
+}
+
+.cds-limited-line strong {
+  color: var(--gold-light);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
 .cds-listen-link {
   display: inline-flex;
   align-items: center;
@@ -3196,11 +3232,18 @@ a {
 
     <!-- 价格与优惠：放在专辑卡片上方 -->
     <div class="cds-notice reveal">
-      <p class="cds-notice-price">原版專輯 NT$500 起</p>
-      <p class="cds-notice-detail">
-      演出前台同步販售，現場購買享有多張合購優惠。<br>
-      <strong class="cds-limited">限量販售，歡迎於演出前台選購。</strong>
-      </p>
+     <p class="cds-notice-price">
+    <span class="cds-price-label">原版專輯</span>
+    <span class="cds-price-amount">NT$500</span>
+    <span class="cds-price-from">起</span>
+  </p>
+
+<p class="cds-notice-detail">
+  <span class="cds-offer-line">演出前台同步販售，現場購買享有多張合購優惠。</span><br>
+  <span class="cds-limited-line">
+    <strong>限量販售</strong>，歡迎於演出前台選購。
+  </span>
+</p>
     </div>
 
     <!-- 三张专辑卡片 -->
