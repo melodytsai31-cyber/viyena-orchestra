@@ -2693,41 +2693,57 @@ a {
 }
   /* 大師班外框：金色光澤流動 */
 .masterclass-feature {
-  border: 1px solid transparent;
-  border-left-width: 4px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(201, 162, 39, 0.12),
-      rgba(201, 162, 39, 0.04)
-    ) padding-box,
-    linear-gradient(
-      110deg,
-      rgba(201, 162, 39, 0.25),
-      #c9a227,
-      #ffe9a6,
-      #c9a227,
-      rgba(201, 162, 39, 0.25)
-    ) border-box;
-
-  background-size: 100% 100%, 300% 300%;
-  animation: masterclassBorderFlow 5s ease-in-out infinite;
+  position: relative;
+  isolation: isolate;
 }
 
-@keyframes masterclassBorderFlow {
-  0%,
-  100% {
-    background-position: 0 0, 0% 50%;
-  }
+.masterclass-feature::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 2px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
 
-  50% {
-    background-position: 0 0, 100% 50%;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(201, 162, 39, 0.4) 40%,
+    #fff0b3 50%,
+    rgba(201, 162, 39, 0.4) 60%,
+    transparent 80%
+  );
+  background-size: 300% 100%;
+  animation: masterclassBorderShimmer 4s linear infinite;
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.masterclass-feature > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes masterclassBorderShimmer {
+  from {
+    background-position: 100% 50%;
+  }
+  to {
+    background-position: 0% 50%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .masterclass-feature {
+  .masterclass-feature::before {
     animation: none;
   }
 }
