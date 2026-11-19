@@ -2626,7 +2626,11 @@ a {
   height: auto;
   margin: 0 auto 1.25rem;
 }
-
+.hsinchu-price-list {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 0.45rem;
+}
 </style>
  
 </head>
@@ -2730,10 +2734,10 @@ a {
         <div class="section-label">Conductor</div>
         <h2 class="section-title">指揮</h2>
         <hr class="gold-divider left">
-        <h3>約翰尼斯・卡夫卡</h3>
+        <h3>約翰內斯・卡夫卡</h3>
         <p class="name-en">Johannes Kafka</p>
         <p>
-          約翰尼斯・卡夫卡出生於 1984 年，曾於林茲安東布魯克納私立大學主修低音管，並進一步專注於合唱與管弦樂指揮相關學習。其演奏與指揮經歷橫跨管弦樂、劇場與大型合奏領域，曾參與多個歐洲重要樂團之演出，並自 2010 年起任職於維也納國家歌劇院舞台樂團。
+          約翰內斯・卡夫卡出生於 1984 年，曾於林茲安東布魯克納私立大學主修低音管，並進一步專注於合唱與管弦樂指揮相關學習。其演奏與指揮經歷橫跨管弦樂、劇場與大型合奏領域，曾參與多個歐洲重要樂團之演出，並自 2010 年起任職於維也納國立歌劇院舞台管弦樂團。
         </p>
         <p>
           長期身處歌劇院與職業樂團體系，使其對舞台節奏、戲劇推進、聲響平衡與大型編制合作具有深刻掌握。在 VBC 中，卡夫卡不僅擔任指揮，也參與團隊音樂語彙與舞台整體推進之形塑。
@@ -2881,7 +2885,7 @@ a {
 
         <div class="tour-card-price">
           <span class="tour-card-price-label">票價</span>
-          <div class="tour-card-price-list">
+          <div class="tour-card-price-list hsinchu-price-list">
             <span>NT$300</span>
             <span>NT$500</span>
             <span>NT$700</span>
@@ -3279,24 +3283,24 @@ a {
           <div class="ensemble-category-count">5 位</div>
         </div>
 
-        <!-- 法國號 -->
+        <!-- 維也納號 -->
         <div class="ensemble-category-block" onclick="openEnsembleModal(2)">
           <div class="ensemble-category-dot"></div>
-          <div class="ensemble-category-name">法國號</div>
+          <div class="ensemble-category-name">維也納號</div>
           <div class="ensemble-category-count">4 位</div>
         </div>
 
-        <!-- 長號 -->
+        <!-- 長號/上低音號 -->
         <div class="ensemble-category-block" onclick="openEnsembleModal(3)">
           <div class="ensemble-category-dot"></div>
-          <div class="ensemble-category-name">長號</div>
+          <div class="ensemble-category-name">長號/上低音號</div>
           <div class="ensemble-category-count">3 位</div>
         </div>
 
-        <!-- 長號/上低音號 -->
+        <!-- 長號 -->
         <div class="ensemble-category-block" onclick="openEnsembleModal(4)">
           <div class="ensemble-category-dot"></div>
-          <div class="ensemble-category-name">長號/上低音號</div>
+          <div class="ensemble-category-name">長號</div>
           <div class="ensemble-category-count">2 位</div>
         </div>
 
