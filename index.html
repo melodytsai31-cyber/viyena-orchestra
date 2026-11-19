@@ -1073,7 +1073,26 @@ section { padding: 6rem 0; position: relative; }
   font-style: italic; color: var(--muted);
   font-size: 0.9rem; letter-spacing: 0.15em;
 }
+.program-item-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin-top: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border-left: 2px solid var(--gold);
+  background: rgba(201, 162, 39, 0.06);
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.65;
+}
 
+.program-item-note-label {
+  flex: 0 0 auto;
+  color: var(--gold-light);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
 /* 臺灣特別呈現 */
 .taiwan-special {
   margin-top: 3rem; padding: 2rem;
@@ -2672,6 +2691,46 @@ a {
   grid-template-columns: repeat(3, max-content);
   gap: 0.45rem;
 }
+  /* 大師班外框：金色光澤流動 */
+.masterclass-feature {
+  border: 1px solid transparent;
+  border-left-width: 4px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(201, 162, 39, 0.12),
+      rgba(201, 162, 39, 0.04)
+    ) padding-box,
+    linear-gradient(
+      110deg,
+      rgba(201, 162, 39, 0.25),
+      #c9a227,
+      #ffe9a6,
+      #c9a227,
+      rgba(201, 162, 39, 0.25)
+    ) border-box;
+
+  background-size: 100% 100%, 300% 300%;
+  animation: masterclassBorderFlow 5s ease-in-out infinite;
+}
+
+@keyframes masterclassBorderFlow {
+  0%,
+  100% {
+    background-position: 0 0, 0% 50%;
+  }
+
+  50% {
+    background-position: 0 0, 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .masterclass-feature {
+    animation: none;
+  }
+}
 </style>
  
 </head>
@@ -3184,6 +3243,10 @@ a {
             <div class="program-item-num">03</div>
             <div class="program-item-title">《寶島意象》(臺灣特別呈獻)</div>
             <div class="program-item-arranger">Ching-Shan Chang: Tapestry of Formosa (Taiwan Special Presentation)</div>
+            <div class="program-item-note">
+            <span class="program-item-note-label">委託編創</span>
+            <span>本作品管弦樂版本《音樂百年組曲》係由國立臺灣交響樂團於 2021 年委託編創。</span>
+            </div>
           </li>
           <li class="program-item">
             <div class="program-item-num">04</div>
